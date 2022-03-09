@@ -3,13 +3,13 @@
 ## Install the project
 
 ```bash
-git clone https://github.com/loveOSS/airflow-heroku.git
+git clone https://github.com/loveOSS/airflow-on-heroku.git
 ```
 
-## Create and set Heroku addons
+## Create the Heroku application
 
 ```bash
-cd airflow-heroku
+cd airflow-on-heroku
 heroku apps:create
 heroku addons:create heroku-postgresql
 ```
@@ -20,10 +20,10 @@ heroku addons:create heroku-postgresql
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
-## Set Heroku Variables
+## Set the Heroku Variables
 
 ```bash
-cd airflow-heroku
+cd airflow-on-heroku
 heroku config:set SLUGIFY_USES_TEXT_UNIDECODE=yes
 heroku config:set AIRFLOW_HOME=/app
 heroku config:set AIRFLOW__CORE__DAGS_FOLDER="/dags"
@@ -32,13 +32,13 @@ heroku config:set AIRFLOW__CORE__SQL_ALCHEMY_CONN=`heroku config:get DATABASE_UR
 heroku config:set AIRFLOW__CORE__EXECUTOR="LocalExecutor"
 ```
 
-To set the fernet key for security, execute the contributed script :
+To set the fernet key for security:
 
 ```python
 python contrib/create_key.py
 ```
 
-And set the generated key in Heroku configuration :
+And set the generated key in Heroku configuration:
 
 ```bash
 heroku config:set AIRFLOW__CORE__FERNET_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXX"
@@ -47,7 +47,7 @@ heroku config:set AIRFLOW__CORE__FERNET_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXX"
 ## Deploy on Heroku
 
 ```bash
-cd airflow-heroku
+cd airflow-on-heroku
 rm -rf .git/
 git init
 git add .
@@ -60,12 +60,17 @@ git push heroku main
 ## Create Admin User account
 
 ```bash
+cd airflow-on-heroku
+heroku run bash
+
 airflow users create \
     --username <username> \
     --firstname <Firstname> \
     --lastname <Lastname> \
     --role Admin \
     --email <your-email@exemple.com>
+
+exit
 ```
 
 ## Access Apache Airflow Web UI
