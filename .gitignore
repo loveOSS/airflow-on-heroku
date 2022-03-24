@@ -1,4 +1,6 @@
 *.pyc
 *.db
+airflow.cfg
+airflow-webserver.pid
 env/
 logs/
