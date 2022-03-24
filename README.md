@@ -26,7 +26,7 @@ heroku addons:create heroku-postgresql:hobby-dev
 cd airflow-on-heroku
 heroku config:set SLUGIFY_USES_TEXT_UNIDECODE=yes
 heroku config:set AIRFLOW_HOME=/app
-heroku config:set AIRFLOW__CORE__DAGS_FOLDER="/dags"
+heroku config:set AIRFLOW__CORE__DAGS_FOLDER="/app/dags"
 heroku config:set AIRFLOW__CORE__LOAD_EXAMPLES=False
 heroku config:set AIRFLOW__CORE__SQL_ALCHEMY_CONN=`heroku config:get DATABASE_URL`
 heroku config:set AIRFLOW__CORE__EXECUTOR="LocalExecutor"
