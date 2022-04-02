@@ -1,4 +1,9 @@
 *.pyc
 *.db
+.coverage
+airflow.cfg
+airflow-webserver.pid
+auth/credentials.json
+standalone_admin_password.txt
 env/
 logs/
