@@ -56,6 +56,23 @@ git checkout -b main
 git branch -D master
 git push heroku main
 ```
+## Configure BigQuery Access
+
+```bash
+cd airflow-on-heroku
+
+heroku config:set AMAZING_SCRAPER_BQ_CONN=<your_bigquery_airflow_connection_name>
+heroku config:set AMAZING_SCRAPER_BQ_PROJECT=<your_bigquery_project_id>
+heroku config:set AMAZING_SCRAPER_BQ_TABLE=<your_bigquery_dataset.table>
+```
+
+For exemple:
+
+```bash
+heroku config:set AMAZING_SCRAPER_BQ_CONN=my_bq_conn
+heroku config:set AMAZING_SCRAPER_BQ_CONN=project-342414
+heroku config:set AMAZING_SCRAPER_BQ_TABLE=globalfirepower_ranking.ranking
+```
 
 ## Create Admin User account
 
